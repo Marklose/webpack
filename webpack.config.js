@@ -30,7 +30,21 @@ module.exports = {
             {
                 test:/\.less/,
                 use:[ "style-loader", "css-loader", "less-loader"]
-            }
+            },
+            {
+                test:/\.(png|gif|jpeg)$/i,
+                type:'asset',
+                generator:{
+                    filename:'images/[hash:6][ext]'
+                }
+            },
+            {
+                test:/\.(eot|svg|ttf|woff|woff2)$/i,
+                type:'asset/resource',
+                generator:{
+                 filename:'fonts/[hash:6][ext]'
+                }
+             },
         ]
     }
 }
