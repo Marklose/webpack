@@ -2,4 +2,5 @@ import { marquee } from './marquee.js'
 import { tab } from './tab.js'
 marquee()
 tab()
-import './css/index.css'
+import './styles/index.css'
+import './styles/index.less'
