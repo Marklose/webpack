@@ -1,6 +1,7 @@
 const path = require("path")
 // 引入自动生成 html 的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { VueLoaderPlugin } = require('vue-loader')
 module.exports = {
     // mode模式，development 开发阶段，简易打包，打包速度快
     mode: 'development',
@@ -13,7 +14,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public/index.html")
-        })
+            
+        }),
+        new VueLoaderPlugin()
     ],
     // 配置服务器
     devServer: {
@@ -45,6 +48,14 @@ module.exports = {
                  filename:'fonts/[hash:6][ext]'
                 }
              },
+             {
+                test: /\.js$/i,
+                use:["babel-loader"]
+             },
+             {
+                test: /\.vue$/,
+                loader: 'vue-loader'
+              }
         ]
     }
 }

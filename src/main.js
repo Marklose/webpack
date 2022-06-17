@@ -13,3 +13,12 @@ gif.src = gifSrc
 png.src = pngSrc
 document.body.appendChild(gif)
 document.body.appendChild(png)
+
+import './assets/fonts/iconfont.css'
+
+const add=()=>{
+    console.log('333');
+}
+add()
+
+import app from './app.vue'
