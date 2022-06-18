@@ -1,0 +1,22 @@
+{
+    //1. parserOptions 解析文件的一些根配置
+    "parserOptions": {
+      // 默认eslint只支持es5, 想用es6不报错
+      "ecmaVersion": 6,
+      // 支持ESModule
+      "sourceType": "module" 
+    },
+    "env": {
+      // 使用浏览器和node的变量
+      "browser": true, 
+      "node": true
+    },
+    // 继承规则配置, eslint-recommended是官方提供的
+    "extends":["eslint:recommended"],
+    // rule会覆盖extends的规则
+    // "error"  "warn"  "off"
+    "rules": {
+      "no-debugger":"warn",
+      "no-var":"error"
+    }
+}

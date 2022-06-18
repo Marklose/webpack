@@ -2,6 +2,8 @@ const path = require("path")
 // 引入自动生成 html 的插件
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const { VueLoaderPlugin } = require('vue-loader')
+const EslintWebpackPlugin = require('eslint-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
     // mode模式，development 开发阶段，简易打包，打包速度快
     mode: 'development',
@@ -16,7 +18,11 @@ module.exports = {
             template: path.join(__dirname, "public/index.html")
             
         }),
-        new VueLoaderPlugin()
+        new VueLoaderPlugin(),
+        new EslintWebpackPlugin({
+            context:path.join(__dirname,'src/')
+        }),
+        new MiniCssExtractPlugin()
     ],
     // 配置服务器
     devServer: {
@@ -25,11 +31,11 @@ module.exports = {
     },
     module: {
         rules: [ // loader规则
-            {
-                test: /\.css/i,
-                // 使用less-loader, 让webpack处理less文件, 内置还会用less翻译less代码成css内容
-                use: ["style-loader", "css-loader"]
-            },
+            // {
+            //     test: /\.css/i,
+            //     // 使用less-loader, 让webpack处理less文件, 内置还会用less翻译less代码成css内容
+            //     use: ["style-loader", "css-loader"]
+            // },
             {
                 test:/\.less/,
                 use:[ "style-loader", "css-loader", "less-loader"]
@@ -55,6 +61,10 @@ module.exports = {
              {
                 test: /\.vue$/,
                 loader: 'vue-loader'
+              },
+              {
+                test: /\.css$/i,
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
               }
         ]
     }

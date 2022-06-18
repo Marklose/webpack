@@ -22,3 +22,4 @@ const add=()=>{
 add()
 
 import app from './app.vue'
+app
